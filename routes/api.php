@@ -6,7 +6,7 @@ use App\Http\Controllers\WebInstallerController;
 use App\Http\Controllers\WhatsAppGroupScraperController;
 use Illuminate\Support\Facades\Route;
 
-// ای‌پي‌آي‌های موتور آنتی‌فیلتر
+// ای‌پي‌آی‌های موتور آنتی‌فیلتر
 Route::get('/antifilter/status', [AntiCensorshipController::class, 'getStatus']);
 Route::get('/antifilter/doh', [AntiCensorshipController::class, 'testDohQuery']);
 Route::get('/antifilter/tls-test', [AntiCensorshipController::class, 'testTlsFragmentation']);
@@ -19,6 +19,8 @@ Route::post('/settings/copyright', [SettingsAndCMSController::class, 'updateFoot
 Route::post('/whatsapp/scraper/store', [WhatsAppGroupScraperController::class, 'scrapeAndStore']);
 Route::get('/whatsapp/scraper/master-directory', [WhatsAppGroupScraperController::class, 'getMasterDirectory']);
 
-// نصب‌کننده آنلاین هاست
+// نصب‌کننده آنلاین ۴ مرحله‌ای هاست
 Route::get('/installer/status', [WebInstallerController::class, 'getInstallStatus']);
+Route::get('/installer/requirements', [WebInstallerController::class, 'checkRequirements']);
+Route::post('/installer/test-db', [WebInstallerController::class, 'testDatabaseConnection']);
 Route::post('/installer/execute', [WebInstallerController::class, 'executeSetup']);
